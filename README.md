@@ -1,4 +1,4 @@
-# Git fixtures for testing library which using git
+# Git fixtures for testing libraries which use git
 
-[![build status](http://gitlab.office.ip.ru/util/git-fixtures/badges/master/build.svg)](http://gitlab.office.ip.ru/util/git-fixtures/commits/master)
-[![coverage report](http://gitlab.office.ip.ru/util/git-fixtures/badges/master/coverage.svg)](http://gitlab.office.ip.ru/util/git-fixtures/commits/master)
+[![build status](http://gitlab.office.ip.ru/util/git-fixture/badges/master/build.svg)](http://gitlab.office.ip.ru/util/git-fixture/commits/master)
+[![coverage report](http://gitlab.office.ip.ru/util/git-fixture/badges/master/coverage.svg)](http://gitlab.office.ip.ru/util/git-fixture/commits/master)
