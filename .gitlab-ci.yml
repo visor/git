@@ -1,3 +1,6 @@
+# Select image from https://hub.docker.com/r/_/php/
+image: php:5.4
+
 # Composer stores all downloaded packages in the vendor/ directory.
 # Do not use the following if the vendor/ directory is commited to
 # your git repository.
