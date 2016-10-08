@@ -68,7 +68,7 @@ class GitTest extends \PHPUnit_Framework_TestCase
     public function testCommitExeption()
     {
         $git = new Git();
-        $this->setExpectedException('GitFixture\Util\ShellExecException');
+        $this->setExpectedException('ShellExec\ShellExecException');
         $res = $git->commit('commit message');
         echo $res;
     }
@@ -82,7 +82,7 @@ class GitTest extends \PHPUnit_Framework_TestCase
     {
         $git = new Git();
         $git->createRepo();
-        $this->setExpectedExceptionRegExp('GitFixture\Util\ShellExecException', '/nothing to commit/');
+        $this->setExpectedExceptionRegExp('ShellExec\ShellExecException', '/nothing to commit/');
         $git->commit('commit message');
     }
 

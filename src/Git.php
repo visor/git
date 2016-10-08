@@ -6,7 +6,7 @@
 
 namespace GitFixture;
 
-use GitFixture\Util\ShellExec;
+use ShellExec\ShellExec;
 use GitFixture\Util\FileSystem;
 
 /**

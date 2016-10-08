@@ -1,6 +1,15 @@
 {
     "name": "cognitive/util/git-fixture",
     "description": "Git fixtures for testing library which using git",
+    "config": {
+        "secure-http": false
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.loc"
+        }
+    ],
     "authors": [
         {
             "name": "Interprogma",
@@ -8,6 +17,7 @@
         }
     ],
     "require": {
+        "cognitive/util/shell-exec": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^4"
