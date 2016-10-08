@@ -4,15 +4,15 @@
  * @package GitFixture
  */
 
-namespace GitFixture;
+namespace Cognitive\Git;
 
-use ShellExec\ShellExec;
-use GitFixture\Util\FileSystem;
+use Cognitive\ShellExec\ShellExec;
+use Cognitive\FileSystem\FileSystem;
 
 /**
  * Class to emulate git.
  */
-class Git
+class GitFixture
 {
     /** @var string Git server repo path */
     protected $dirServer = '.gitFixtureDirServer';
@@ -201,6 +201,26 @@ class Git
             'git push origin '. $this->getCurentBranch() . ':' . $this->getCurentBranch(),
             true
         );
+    }
+
+    /**
+     * Get list of commited files by commit hash.
+     *
+     * @param string $commit Commit hash.
+     *
+     * @return array(string)
+     */
+    public function getCommitedFilesByCommit($commit)
+    {
+        $result = $this->execShell("git show --pretty=\"format:\" --name-only $commit");
+        $files = explode("\n", $result);
+
+        $files = array_filter($files, function ($file) {
+            return !empty($file);
+        });
+
+        $files = array_unique($files);
+        return $files;
     }
 
     /**

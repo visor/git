@@ -1,6 +1,14 @@
 {
-    "name": "cognitive/util/git-fixture",
-    "description": "Git fixtures for testing library which using git",
+    "name": "cognitive/git",
+    "description": "Library to work with Git and to test library which using git",
+    "type": "library",
+    "homepage": "http://www.cognitive.ru/",
+    "authors": [
+        {
+            "name": "Cognitive",
+            "email": "info@cognitive.ru"
+        }
+    ],
     "config": {
         "secure-http": false
     },
@@ -17,15 +25,16 @@
         }
     ],
     "require": {
-        "cognitive/util/shell-exec": "dev-master"
+        "cognitive/shell-exec": "dev-master",
+        "cognitive/file-system": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^4"
     },
     "autoload": {
         "psr-4": {
-            "GitFixture\\": "src/",
-            "GitFixture\\Tests\\": "tests/"
+            "Cognitive\\Git\\": "src/",
+            "Cognitive\\Git\\Tests\\": "tests/"
         }
     }
 }

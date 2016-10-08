@@ -4,16 +4,15 @@
  * @package GitFixture\Tests
  */
 
-namespace GitFixture\Tests;
+namespace Cognitive\Git\Tests;
 
-use GitFixture\Util\FileSystem;
-
-use GitFixture\Git;
+use Cognitive\FileSystem\FileSystem;
+use Cognitive\Git\GitFixture;
 
 /**
  * Class to test Git
  */
-class GitTest extends \PHPUnit_Framework_TestCase
+class GitFixtureTest extends \PHPUnit_Framework_TestCase
 {
     const COMMIT_HASH_LENGTH = 40;
     /** @var string */
@@ -67,8 +66,8 @@ class GitTest extends \PHPUnit_Framework_TestCase
      */
     public function testCommitExeption()
     {
-        $git = new Git();
-        $this->setExpectedException('ShellExec\ShellExecException');
+        $git = new GitFixture();
+        $this->setExpectedException('Cognitive\ShellExec\ShellExecException');
         $res = $git->commit('commit message');
         echo $res;
     }
@@ -80,9 +79,9 @@ class GitTest extends \PHPUnit_Framework_TestCase
      */
     public function testCommitEmpty()
     {
-        $git = new Git();
+        $git = new GitFixture();
         $git->createRepo();
-        $this->setExpectedExceptionRegExp('ShellExec\ShellExecException', '/nothing to commit/');
+        $this->setExpectedExceptionRegExp('Cognitive\ShellExec\ShellExecException', '/nothing to commit/');
         $git->commit('commit message');
     }
 
@@ -93,7 +92,7 @@ class GitTest extends \PHPUnit_Framework_TestCase
      */
     public function testCommitSuccess()
     {
-        $git = new Git();
+        $git = new GitFixture();
         $git->createRepo();
         $git->addFile('test', 'test content');
         $git->commit('commit message');
