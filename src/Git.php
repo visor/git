@@ -181,6 +181,29 @@ class Git
     }
 
     /**
+     * Get current branch.
+     *
+     * @return string
+     */
+    public function getCurentBranch()
+    {
+        return $this->exec->exec('git symbolic-ref --short HEAD');
+    }
+
+    /**
+     * Real commit to server with message.
+     *
+     * @return void
+     */
+    public function push()
+    {
+        $this->exec->exec(
+            'git push origin '. $this->getCurentBranch() . ':' . $this->getCurentBranch(),
+            true
+        );
+    }
+
+    /**
      * Get current revision hash.
      *
      * @return string
