@@ -12,12 +12,6 @@
     "config": {
         "secure-http": false
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://packages.loc"
-        }
-    ],
     "require": {
         "cognitive/shell-exec": ">0.0.0",
         "cognitive/file-system": "^0"
