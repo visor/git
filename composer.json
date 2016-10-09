@@ -18,14 +18,8 @@
             "url": "http://packages.loc"
         }
     ],
-    "authors": [
-        {
-            "name": "Interprogma",
-            "email": "info@interprogma.ru"
-        }
-    ],
     "require": {
-        "cognitive/shell-exec": "^0",
+        "cognitive/shell-exec": ">0.0.0",
         "cognitive/file-system": "^0"
     },
     "require-dev": {
