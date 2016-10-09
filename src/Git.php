@@ -63,12 +63,16 @@ class Git
         }
         $authorName = $this->exec->exec("git show -s --format='%an' $commitHash");
         $authorDate = $this->exec->exec("git show -s --format='%ai' $commitHash");
-        $candidateHash = $this->exec->exec("git rev-list --author-date-order --reverse " .
-            "--author='$authorName' --after='$authorDate' origin/$branchName | head -1");
-        if ($candidateHash) {
-            $candidatePatchId = $this->getCommitPatchId($candidateHash);
-            if ($patchId === $candidatePatchId) {
-                return $candidateHash;
+        $candidateHashLines = $this->exec->explodeLinesToArray($this->exec->exec(
+            "git rev-list --author-date-order --reverse " .
+            "--author='$authorName' --after='$authorDate' $branchName"
+        ));
+        foreach ($candidateHashLines as $candidateHash) {
+            if ($candidateHash) {
+                $candidatePatchId = $this->getCommitPatchId($candidateHash);
+                if ($patchId === $candidatePatchId) {
+                    return $candidateHash;
+                }
             }
         }
         return false;
@@ -83,7 +87,7 @@ class Git
      */
     public function getCommitPatchId($commitHash)
     {
-        $patchId = trim(array_pop(explode(" ", $this->exec->exec("git show $commitHash | git patch-id"))));
+        $patchId = trim(current(explode(" ", $this->exec->exec("git show $commitHash | git patch-id"))));
         if (empty($patchId)) {
             return false;
         } else {
