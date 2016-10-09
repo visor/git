@@ -61,11 +61,12 @@ class Git
         if (!$patchId) {
             return false;
         }
-        $authorName = $this->exec->exec("git show -s --format='%an' $commitHash");
-        $authorDate = $this->exec->exec("git show -s --format='%ai' $commitHash");
+        $authorName = $this->exec->exec("git show -s --format='%an' $commitHash", true);
+        $authorDate = $this->exec->exec("git show -s --format='%ai' $commitHash", true);
         $candidateHashLines = $this->exec->explodeLinesToArray($this->exec->exec(
-            "git rev-list --author-date-order --reverse " .
-            "--author='$authorName' --after='$authorDate' $branchName"
+            "git rev-list --reverse " .
+            "--author='$authorName' --after='$authorDate' $branchName",
+            true
         ));
         foreach ($candidateHashLines as $candidateHash) {
             if ($candidateHash) {

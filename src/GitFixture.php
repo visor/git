@@ -173,11 +173,12 @@ class GitFixture
      *
      * @param string $message Commit message.
      *
-     * @return string
+     * @return string Commit hash.
      */
     public function commit($message)
     {
-        return $this->exec->exec('git commit -m "' . $message . '"', true);
+        $this->exec->exec('git commit -m "' . $message . '"', true);
+        return $this->getCurrentRev();
     }
 
     /**
