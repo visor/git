@@ -25,7 +25,7 @@
         }
     ],
     "require": {
-        "cognitive/shell-exec": "dev-master",
+        "cognitive/shell-exec": "^0",
         "cognitive/file-system": "^0"
     },
     "require-dev": {
